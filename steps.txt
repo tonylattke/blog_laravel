@@ -1,3 +1,6 @@
+Usando Sqlite3, instalar:
+sudo apt-get install php5-sqlite
+
 Crear el proyecto:
 composer create-project laravel/laravel blog --prefer-dist
 
@@ -8,7 +11,7 @@ Correr el servidor:
 php artisan serve
 
 Crear la migracion:
-php artisan migrate:make create_users_table
+php artisan migrate:make create_post_table
 
 Ejecutar la migracion:
 php artisan migrate
