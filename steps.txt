@@ -1,0 +1,17 @@
+Crear el proyecto:
+composer create-project laravel/laravel blog --prefer-dist
+
+Acceder al phpmyadmin:
+http://localhost/phpmyadmin
+
+Correr el servidor:
+php artisan serve
+
+Crear la migracion:
+php artisan migrate:make create_users_table
+
+Ejecutar la migracion:
+php artisan migrate
+
+Ver las rutas:
+php artisan routes
