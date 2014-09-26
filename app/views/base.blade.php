@@ -11,10 +11,10 @@
 
     <!-- This template com from http://startbootstrap.com/all-templates -->
     <!-- Bootstrap core CSS -->
-    <link rel="stylesheet" href="css/bootstrap.css" type="text/css"/>
+    <link rel="stylesheet" href="/css/bootstrap.css" type="text/css"/>
 
     <!-- Add custom CSS here -->
-    <link rel="stylesheet" href="css/main.css" type="text/css"/>
+    <link rel="stylesheet" href="/css/main.css" type="text/css"/>
 
     <!-- Fonts -->
 
@@ -23,7 +23,7 @@
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
     <![endif]-->
-    <link rel="icon" type='image/x-icon' href="favicon.ico">
+    <link rel="icon" type='image/x-icon' href="/favicon.ico">
 </head>
 
 <body>
@@ -77,7 +77,7 @@
                 
 
                 <div class="well">
-                    <img src="img/logo-tony.png" id="logo">
+                    <img src="/img/logo-tony.png" id="logo">
                 </div>
             </div>
         </div>
@@ -96,9 +96,9 @@
     <!-- /.container -->
 
     <!-- JavaScript -->
-    <script src="js/jquery-1.10.2.js"></script>
-    <script src="js/bootstrap.js"></script>
-    <script src="js/base.js"></script>
+    <script src="/js/jquery-1.10.2.js"></script>
+    <script src="/js/bootstrap.js"></script>
+    <script src="/js/base.js"></script>
 
     <!-- Javascript end -->
 

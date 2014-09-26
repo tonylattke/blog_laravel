@@ -4,8 +4,8 @@
 
 @if (count($posts) > 0)
     @foreach($posts as $post)
-    	<form method="post" id="form_delete_post" action="/post/delete"> </form>
-	    <h1 id="{{$post->id}}">
+        <form method="post" id="form_delete_post" action="/post/delete"> </form>
+        <h1 id="{{$post->id}}">
             <a href="/post/{{$post->id}}">{{$post->name}}</a>
             <a class="btn" href="/post/{{$post->id}}/edit">Edit</a>
             <a class="btn btn-primary pull-right delete_post">X</a>
@@ -14,15 +14,18 @@
             <span class="glyphicon glyphicon-time"></span> Posted on {{ $post->created_at }}
         </p>
 
-        {{ $post->text }}
+        <p>{{ $post->text }}</p>
+        
         </br>
+        
         </br>
+        
         <a class="btn btn-primary" href="/post/{{$post->id}}">
-        	Read More <span class="glyphicon glyphicon-chevron-right"></span>
+            Read More <span class="glyphicon glyphicon-chevron-right"></span>
         </a>
 
         <hr>
-	@endforeach
+    @endforeach
 @else
     <p>No posts</p>
 @endif
