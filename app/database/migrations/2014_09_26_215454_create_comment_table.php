@@ -3,20 +3,20 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePostTable extends Migration {
+class CreateCommentTable extends Migration {
 
     /**
-     * Run the migrations creating the post table.
+     * Run the migrations.
      *
      * @return void
      */
     public function up()
     {
-        Schema::create('post', function($table)
+        Schema::create('comment', function($table)
         {
             $table->increments('id');
+            $table->integer('post_id');
             $table->string('name');
-            //$table->string('name')->unique();
             $table->string('text');
             $table->timestamps();
         });
@@ -29,7 +29,7 @@ class CreatePostTable extends Migration {
      */
     public function down()
     {
-        Schema::drop('post');
+        Schema::drop('comment');
     }
 
 }
