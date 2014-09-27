@@ -2,6 +2,15 @@
 
 @section('principal_content')
 
+@if($errors->has())
+    <h5>Erros:</h5>
+    <ul>
+        @foreach($errors->all() as $error)
+            <li>{{ $error }}</li>
+        @endforeach
+    </ul>
+@endif
+
 <form method="post" id="form_delete_post" action="/post/delete"> </form>
 <h1 id="{{$post->id}}">
     <a href="/post/{{$post->id}}">{{$post->name}}</a>
@@ -18,14 +27,16 @@
 
 <!-- the comment box -->
 <div class="well">
-    <form role="form" method="post" action="/post/{{$post->id}}/make_comment">
+    <form role="form" method="post" action="/post/make_comment">
+        <input type="hidden" name="token" value="{{ $token }}">
+        <input type="hidden" name="id" value="{{ $post->id }}">
         <h4>Name:</h4>
         <div class="form-group">
-            <textarea name="comment_name" class="form-control" rows="1"></textarea>
+            <textarea name="name" class="form-control" rows="1"></textarea>
         </div>
         <h4>Leave a Comment:</h4>
         <div class="form-group">
-            <textarea name="comment_text" class="form-control" rows="3"></textarea>
+            <textarea name="text" class="form-control" rows="3"></textarea>
         </div>
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>

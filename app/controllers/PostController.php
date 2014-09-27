@@ -9,13 +9,14 @@ class PostController extends BaseController {
     // Read
     public function read($id) {
         $post = Post::find($id);
-        $comments = Comment::all();
+        $comments = Comment::where('post_id', '=', $id)->get();
 
         $years = getYears();
 
         $view = View::make('post.read');
         $view['post'] = $post;
         $view['years'] = $years;
+        $view['token'] = csrf_token();
         $view->comments = $comments;
         
         return $view;
@@ -99,6 +100,26 @@ class PostController extends BaseController {
 
     // Make Comment
     public function make_comment(){
-        # code...
+        // Get parametters
+        $request = Input::all();
+
+        $id = $request['id'];
+
+        $validation = Comment::validate($request);
+
+        if ($validation->fails()) {
+            return Redirect::to('/post/'. strval($id))->withErrors($validation->messages());
+        } else {
+            // Create instance
+            $comment = new Comment;
+
+            $comment->post_id = $id;
+            $comment->name = $request['name'];
+            $comment->text = $request['text'];
+
+            $comment->save();
+
+            return Redirect::to('/post/'. strval($id));
+        }
     }
 }

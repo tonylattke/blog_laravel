@@ -17,7 +17,7 @@ class HomeController extends BaseController {
     }
 
     public function year($anio) {
-
+        // Correct get year
     	$posts = Post::whereNested(function($query){
 			$query->where('created_at', '>', strval(date(DATE_ATOM, mktime(0, 0, 0, 1, 1, 2014))));
 			$query->where('created_at', '<', strval(date(DATE_ATOM, mktime(0, 0, 0, 12, 31, 2014))));
