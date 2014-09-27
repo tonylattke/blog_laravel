@@ -13,6 +13,7 @@
 </p>
 
 <p>{{ $post->text }}</p>
+
 </hr>
 
 <!-- the comment box -->
@@ -31,8 +32,8 @@
 </div>
 
 </hr>
-<!-- the comments -->
 
+<!-- the comments -->
 @if (count($comments) > 0)
     @foreach($comments as $comment)
         <h3> {{ $comment->name }}
@@ -44,6 +45,19 @@
     <p>No comments</p>
 @endif
 
-<!-- <script src="js/home.js"></script> -->
+@stop
 
+@section('content_special')
+<!-- list of years -->
+<div class="well">
+    <h4>Last posts</h4>
+    <ul class="list-unstyled">
+        @foreach($years as $year)
+            <li>
+                <a href="/year/{{ $year }}">{{ $year }}</a>
+            </li>
+        @endforeach   
+    </ul>
+</div>
+<!-- list of years -->
 @stop

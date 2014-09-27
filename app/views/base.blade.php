@@ -40,30 +40,13 @@
 
             <div class="col-lg-4">
 
-                    <!-- list of years -->
-                    <div class="well">
-                        <h4>Last posts</h4>
-                        <ul class="list-unstyled">
-                            
-                            <li>
-                                <a href="/year/2014">2014</a>
-                            </li>
-                            
-                        </ul>
-                    </div>
-                    <!-- list of years -->
+                    @yield('content_special')
 
                     <!-- New Post -->
                     <div class="well">
                         <a href="/post/new">Create Post</a>
                     </div>
                     <!-- New Post -->
-
-                    <!-- Logout -->
-                    <div class="well">
-                        <a href="/logout">Logout</a>
-                    </div>
-                    <!-- Logout -->
 
                     <!-- Login -->
                     <div class="well">
@@ -99,8 +82,11 @@
     <script src="/js/jquery-1.10.2.js"></script>
     <script src="/js/bootstrap.js"></script>
     <script src="/js/base.js"></script>
+    <script src="/js/post.js"></script>
 
     <!-- Javascript end -->
+
+    @yield('javascript_content')
 
 </body>
 

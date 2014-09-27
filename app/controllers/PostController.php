@@ -1,5 +1,7 @@
 <?php
 
+include 'Helpers.php';
+
 class PostController extends BaseController {
 
     public $restful = true;
@@ -9,40 +11,40 @@ class PostController extends BaseController {
         $post = Post::find($id);
         $comments = Comment::all();
 
+        $years = getYears();
+
         $view = View::make('post.read');
         $view['post'] = $post;
+        $view['years'] = $years;
         $view->comments = $comments;
         
         return $view;
     }
 
     // New
-    public function post_new() {
+    public function get_new() {
         return View::make('post.new')
             ->with('token', csrf_token());
     }
 
     // Create
     public function create() {
-        /*$validation = Post::validate(Input::all());
+        // Get parametters
+        $request = Input::all();
+
+        $validation = Post::validate($request);
 
         if ($validation->fails()) {
-            return Redirect::to('/post/new');
+            return Redirect::to('/post/new')->withErrors($validation->messages());
         } else {
-
-        }*/
-        
-
-        $request = Input::all();
+            // Create instance
+            $post = new Post;
+            $post->name = $request['name'];
+            $post->text = $request['text'];
+            $post->save();
             
-        $post = new Post;
-
-        $post->name = $request['name'];
-        $post->text = $request['text'];
-
-        $post->save();
-
-        return Redirect::to('/post/'.strval($post->id));
+            return Redirect::to('/post/'.strval($post->id));
+        }
     }
 
     // Edit
@@ -58,39 +60,30 @@ class PostController extends BaseController {
 
     // Update
     public function update() {
-        /*$validation = Post::validate(Input::all());
-
-        if ($validation->fails()) {
-            return Redirect::to('/post/new');
-        } else {
-
-        }*/
-        
-
+        // Get parametters
         $request = Input::all();
 
         $id = $request['id'];
 
-        $post = Post::find($id);
+        $validation = Post::validate($request);
 
-        $post->name = $request['name'];
-        $post->text = $request['text'];
+        if ($validation->fails()) {
+            return Redirect::to('/post/'. strval($id) .'/edit')->withErrors($validation->messages());
+        } else {
+            // Create instance
+            $post = Post::find($id);
 
-        $post->save();
+            $post->name = $request['name'];
+            $post->text = $request['text'];
 
-        return Redirect::to('/post/'.strval($id));
+            $post->save();
+
+            return Redirect::to('/post/'.strval($id));
+        }
     }
 
     // Delete
-    public function delete() {
-        /*$validation = Post::validate(Input::all());
-
-        if ($validation->fails()) {
-            return Redirect::to('/post/new');
-        } else {
-
-        }*/
-        
+    public function delete() {        
         $request = Input::all();
         Post::find($request['id'])->delete();
 
@@ -102,5 +95,10 @@ class PostController extends BaseController {
         $posts = Post::all();
 
         return $posts;
+    }
+
+    // Make Comment
+    public function make_comment(){
+        # code...
     }
 }
